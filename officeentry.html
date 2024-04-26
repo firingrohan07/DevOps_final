@@ -66,7 +66,46 @@
         </div>
     </main>
     
-    <script src="script2.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('entry-form');
+    const entryList = document.getElementById('entry-list');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent the form from submitting the traditional way
+
+        // Get the form data
+        const formData = {
+            date: document.getElementById('date').value,
+            day: document.getElementById('day').value,
+            vehicle: document.getElementById('vehicle').value,
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            address: document.getElementById('address').value,
+            email: document.getElementById('email').value,
+            entryTime: document.getElementById('entry-time').value,
+            officeNo: document.getElementById('office-no').value,
+        };
+
+        // Create a new row for the entry list
+        const row = document.createElement('tr');
+
+        // Create and append table cells for each form data
+        for (let key in formData) {
+            const cell = document.createElement('td');
+            cell.textContent = formData[key];
+            row.appendChild(cell);
+        }
+
+        // Append the row to the entry list
+        entryList.appendChild(row);
+
+        // Reset the form after submission
+        form.reset();
+    });
+});
+
+    </script>
 </body>
 </html>
 
